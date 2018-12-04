@@ -1,3 +1,4 @@
+require "sinatra"
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
@@ -44,3 +45,19 @@ page '/*.txt', layout: false
 #   activate :minify_css
 #   activate :minify_javascript
 # end
+
+
+
+class MySinatra < Sinatra::Base
+  get "/" do
+    erb :index
+  end
+  get "/derp" do
+    "De doo"
+  end
+end
+
+map "/" do
+  run MySinatra
+  puts "run sinatra"
+end
