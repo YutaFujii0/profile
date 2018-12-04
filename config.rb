@@ -46,18 +46,18 @@ page '/*.txt', layout: false
 #   activate :minify_javascript
 # end
 
-
-
 class MySinatra < Sinatra::Base
-  get "/" do
-    erb :index
+  set :views, [ File.expand_path("../source/views/", __FILE__) ]
+  helpers do
+    def find_template(views, name, engine, &block)
+      Array(views).each { |v| super(v, name, engine, &block) }
+    end
   end
-  get "/derp" do
-    "De doo"
+  get "/" do
+    haml :index, "layout" => :post
   end
 end
 
 map "/" do
   run MySinatra
-  puts "run sinatra"
 end
