@@ -1,4 +1,4 @@
-require "sinatra"
+require 'sinatra/sprockets-helpers'
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
@@ -46,9 +46,23 @@ page '/*.txt', layout: false
 #   activate :minify_javascript
 # end
 
+
 class MySinatra < Sinatra::Base
+  register Sinatra::Sprockets::Helpers
+  set :sprockets ,Sprockets::Environment.new
   set :views, [ File.expand_path("../source/views/", __FILE__) ]
   set :public_folder, File.expand_path("../source/", __FILE__)
+
+  configure do
+    sprockets.append_path "source/javascripts"
+    sprockets.append_path "source/stylesheets"
+    sprockets.js_compressor  = :uglify
+    sprockets.css_compressor = :scss
+
+    configure_sprockets_helpers do |helpers|
+      helpers.asset_host = 'some-bucket.s3.amazon.com'
+    end
+  end
 
   helpers do
     def find_template(views, name, engine, &block)
