@@ -48,6 +48,8 @@ page '/*.txt', layout: false
 
 class MySinatra < Sinatra::Base
   set :views, [ File.expand_path("../source/views/", __FILE__) ]
+  set :public_folder, File.expand_path("../source/", __FILE__)
+
   helpers do
     def find_template(views, name, engine, &block)
       Array(views).each { |v| super(v, name, engine, &block) }
