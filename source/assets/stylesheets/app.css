@@ -52,18 +52,47 @@ body {
 }
 
 .nameboard {
+  position: relative;
   background-color: rgb(158, 158, 158);
   height: calc(100vh * 0.375 - 30px);
   padding-top: 10px;
   border-radius: 10px 10px 0 0;
 }
+/* avatar */
+#avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.nameholder {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.contacts ul {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 0;
+}
+
 .contacts li {
   display: inline;
-  font-size: 48px;
+  font-size: 36px;
   text-decoration: none;
 }
 .contacts a {
+  color: rgb(90, 90, 90);
   transition: 0.2s all;
+  background-color: white;
+  padding: 0 3px;
+  border-radius: 3px;
 }
 .contacts a:hover {
   color: red;
@@ -80,12 +109,46 @@ body {
   padding: 2px 10px;
   line-height: 28px;
 }
+.language.studying {
+  border: 1px solid rgb(150, 150, 150);
+  color: rgb(150, 150, 150);
+}
+
+.project-list {
+  text-align: left;
+  padding: 30px;
+}
 
 /* product */
 .product-body-content {
   margin-top: 30px;
   margin-left: 30px;
 }
+
+.product-body-content p {
+  margin-bottom: 30px;
+}
+
+.product-body-content a {
+  border-radius: 4px;
+  border: 1px solid rgb(90, 90, 90);
+  color: rgb(90, 90, 90);
+  padding: 5px 20px;
+  margin: 20px;
+  width: 100%;
+  font-size: 24px;
+  text-decoration: none;
+  transition: 0.2s all;
+}
+.product-body-content a:hover {
+  border: 1px solid red;
+  color: red;
+}
+.product-body-content ul {
+  padding: 0;
+  list-style-type: none;
+}
+
 .product-body-image {
   margin-top: 30px;
   text-align: center;
@@ -95,12 +158,6 @@ body {
   max-height: 80%;
 }
 
-/* avatar */
-#avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
 
 /* grid */
 .grid-container {
@@ -108,11 +165,29 @@ body {
   min-height: 100vh;
   min-width: 100vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 3fr 5fr;
+  grid-template-rows: 37.5vh auto;
   grid-template-areas:
       "profile l-summary c-summary r-summary"
-      "profile product-body product-image product-image";
+      "profile product product product";
   grid-gap: 5px;
+}
+
+.product {
+  display: grid;
+  min-height: 62.5vh;
+  min-width: 75vh;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+      "product-body product-image product-image";
+  grid-gap: 5px;
+}
+.product-body-content {
+  grid-area: product-body;
+}
+
+.product-body-image {
+  grid-area: product-image;
 }
 
 .card-summary.left {
@@ -130,17 +205,16 @@ body {
   text-align: center;
 }
 
-.product-body-content {
-  grid-area: product-body;
-}
-
-.product-body-image {
-  grid-area: product-image;
+.products {
+  grid-area: product;
 }
 
 .sidebar {
   grid-area: profile;
+  position: fixed;
   text-align: center;
+  height: 100vh;
+  width: 25vw;
 }
 
 
