@@ -1,3 +1,7 @@
+require 'sinatra/base'
+require 'sprockets'
+require 'uglifier'
+require 'sass'
 require 'sinatra/sprockets-helpers'
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
@@ -5,6 +9,11 @@ require 'sinatra/sprockets-helpers'
 activate :autoprefixer do |prefix|
   prefix.browsers = "last 2 versions"
 end
+# comment out(use later to solve sprockets problem)
+# activate :sprockets do |c|
+#   c.imported_asset_path = File.expand_path("../source/assets", __FILE__)
+#   puts c
+# end
 
 # Layouts
 # https://middlemanapp.com/basics/layouts/
@@ -50,12 +59,14 @@ page '/*.txt', layout: false
 class MySinatra < Sinatra::Base
   register Sinatra::Sprockets::Helpers
   set :sprockets ,Sprockets::Environment.new
+  set :assets_prefix, '/assets'
+  set :digest_assets, true
   set :views, [ File.expand_path("../source/views/", __FILE__) ]
-  set :public_folder, File.expand_path("../source/", __FILE__)
+  set :public_folder, File.expand_path("../source/assets", __FILE__)
 
   configure do
-    sprockets.append_path "source/javascripts"
-    sprockets.append_path "source/stylesheets"
+    sprockets.append_path "source/assets/javascripts"
+    sprockets.append_path "source/assets/stylesheets"
     sprockets.js_compressor  = :uglify
     sprockets.css_compressor = :scss
 
