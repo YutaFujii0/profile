@@ -2,10 +2,12 @@
 h2 {
   font-size: 36px;
   margin: 0;
+  font-family: 'Cormorant', serif;
 }
 h3 {
   font-size: 24px;
   margin: 0;
+
 }
 h4 {
   font-size: 18px;
@@ -18,6 +20,8 @@ p {
 body {
   background-color: rgb(245, 245, 245);
   color: rgb(90, 90, 90);
+  font-family: 'Rajdhani', sans-serif;
+  margin: 0;
 }
 
 /* summary cards */
@@ -25,6 +29,7 @@ body {
   margin: 30px;
   border-bottom: 2px solid rgb(180, 180, 180);
   position: relative;
+  min-height: 170px;
 }
 .description {
   position: absolute;
@@ -54,6 +59,7 @@ body {
 .nameboard {
   position: relative;
   background-color: rgb(158, 158, 158);
+  color: white;
   height: calc(100vh * 0.375 - 30px);
   padding-top: 10px;
   border-radius: 10px 10px 0 0;
@@ -101,13 +107,16 @@ body {
 .lang-parent {
   padding: 30px;
 }
-
+.lang-parent h3 {
+  text-align: left;
+  margin-bottom: 15px;
+}
 .language {
   background-color: #fff;
   border: 1px solid rgb(90, 90, 90);
   border-radius: 2px;
   padding: 2px 10px;
-  line-height: 28px;
+  line-height: 32px;
 }
 .language.studying {
   border: 1px solid rgb(150, 150, 150);
@@ -121,8 +130,19 @@ body {
 
 /* product */
 .product-body-content {
-  margin-top: 30px;
-  margin-left: 30px;
+
+}
+
+.product-title {
+  display: flex;
+  align-items: center;
+}
+
+.red-box {
+  width: 5px;
+  height: 30px;
+  margin-right: 10px;
+  background-color: red;
 }
 
 .product-body-content p {
@@ -156,7 +176,7 @@ body {
 .product-body-image img {
   max-width: 80%;
   max-height: 80%;
-  box-shadow: 1px 1px 15px rgb(200, 200, 200);
+  box-shadow: 0 0 15px rgb(150, 150, 150);
 }
 
 
@@ -164,7 +184,7 @@ body {
 .grid-container {
   display: grid;
   min-height: 100vh;
-  min-width: 100vh;
+  min-width: 100vw;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 37.5vh auto;
   grid-template-areas:
@@ -176,7 +196,7 @@ body {
 .product {
   display: grid;
   min-height: 62.5vh;
-  min-width: 75vh;
+  min-width: 75vw;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
   grid-template-areas:
@@ -185,6 +205,8 @@ body {
 }
 .product-body-content {
   grid-area: product-body;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
 .product-body-image {
@@ -223,25 +245,37 @@ body {
   .grid-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100vh auto auto auto 50vh 50vh;
+  grid-template-rows: 100vh auto auto auto auto;
   grid-template-areas:
       "profile"
       "l-summary"
       "c-summary"
       "r-summary"
-      "product-image"
-      "product-body";
+      "product";
   }
 
   .product {
     display: grid;
-    min-height: 62.5vh;
-    min-width: 75vh;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr;
+    min-height: 100vh;
+    /*width: 100vw;*/
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     grid-template-areas:
-        "product-body product-image product-image";
+        "product-image"
+        "product-body";
     grid-gap: 5px;
+  }
+
+  .sidebar {
+    grid-area: profile;
+    position: unset;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+  }
+  .product-body-content {
+    grid-area: product-body;
+    margin: 0 30px;
   }
 }
 
