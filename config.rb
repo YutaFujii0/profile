@@ -61,7 +61,7 @@ configure :build do
   # Append a hash to asset urls (make sure to use the url helpers)
   activate :asset_hash
 
-  activate :asset_host, :host => '//https://yutafujii.herokuapp.com/.cloudfront.net'
+  activate :asset_host, :host => '//yutafujii.cloudfront.net'
 end
 
 class MySinatra < Sinatra::Base
@@ -70,7 +70,7 @@ class MySinatra < Sinatra::Base
   set :assets_prefix, '/assets'
   set :digest_assets, true
   set :views, [ File.expand_path("../source/views/", __FILE__) ]
-  set :public_folder, File.expand_path("../source/assets", __FILE__)
+  set :public_folder, File.expand_path("../source", __FILE__)
 
   configure do
     sprockets.append_path "source/assets/javascripts"
