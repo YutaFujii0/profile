@@ -1,4 +1,8 @@
 require 'sinatra/base'
+require 'sprockets'
+require 'uglifier'
+require 'sass'
+require 'sinatra/sprockets-helpers'
 
 class MySinatra < Sinatra::Base
   register Sinatra::Sprockets::Helpers
