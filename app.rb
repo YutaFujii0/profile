@@ -37,4 +37,6 @@ class MySinatra < Sinatra::Base
   get "/views/layouts/layout" do
     haml "layouts/layout"
   end
+
+
 end
