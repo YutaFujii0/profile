@@ -4,6 +4,9 @@ require 'uglifier'
 require 'sass'
 require 'sinatra/sprockets-helpers'
 require_relative 'app'
+
+# To be checked if these part is necessary
+# ===========================================
 require "rack/codehighlighter"
 require "pygments"
 use ::Rack::Codehighlighter,
@@ -11,6 +14,8 @@ use ::Rack::Codehighlighter,
   :element => "pre>code",
   :pattern => /\A:::([-_+\w]+)\s*\n/,
   :markdown => true
+# ===========================================
+
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
@@ -90,16 +95,17 @@ class MySinatra < Sinatra::Base
   get "/" do
     haml :index, "layouts/layout" => :post
   end
+
+  # just for the 'middelman build' code, no other purpose
   get "/views/index" do
     haml :index, "layout" => :post
   end
   get "/views/layouts/layout" do
     haml "layouts/layout"
   end
-
-
 end
 
-map "/sinatra" do
+# need this code to run sinatra with the terminal code 'middleman server'
+map "/" do
   run MySinatra
 end
