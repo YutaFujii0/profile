@@ -3,7 +3,14 @@ require 'sprockets'
 require 'uglifier'
 require 'sass'
 require 'sinatra/sprockets-helpers'
-require './app'
+require_relative 'app'
+require "rack/codehighlighter"
+require "pygments"
+use ::Rack::Codehighlighter,
+  :pygments,
+  :element => "pre>code",
+  :pattern => /\A:::([-_+\w]+)\s*\n/,
+  :markdown => true
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 

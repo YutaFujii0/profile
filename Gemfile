@@ -12,6 +12,8 @@ gem 'font-awesome-sass', '~> 5.0.9'
 gem 'pg'
 gem 'haml'
 # gem 'middleman-sprockets'
+gem 'pygments.rb'
+gem 'rack-codehighlighter', :git => "git://github.com/wbzyl/rack-codehighlighter.git"
 gem 'rake'
 gem 'sass'
 gem 'sinatra'

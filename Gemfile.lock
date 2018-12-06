@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/wbzyl/rack-codehighlighter.git
+  revision: c700f1fa677e7de8d2733594ccf99a4a958f28f4
+  specs:
+    rack-codehighlighter (0.6.0)
+      nokogiri (>= 1.4.1)
+      rack (>= 2.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -82,9 +90,12 @@ GEM
       servolux
       tilt (~> 2.0)
       uglifier (~> 3.0)
+    mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
     mustermann (1.0.3)
+    nokogiri (1.8.5)
+      mini_portile2 (~> 2.3.0)
     padrino-helpers (0.13.3.4)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.13.3.4)
@@ -94,6 +105,8 @@ GEM
     parallel (1.12.1)
     pg (1.1.3)
     public_suffix (3.0.3)
+    pygments.rb (1.2.1)
+      multi_json (>= 1.0.0)
     rack (2.0.6)
     rack-protection (2.0.4)
       rack
@@ -146,6 +159,8 @@ DEPENDENCIES
   middleman (~> 4.2)
   middleman-autoprefixer (~> 2.7)
   pg
+  pygments.rb
+  rack-codehighlighter!
   rake
   sass
   sinatra
