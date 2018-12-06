@@ -55,29 +55,7 @@ page '/*.txt', layout: false
 #   activate :minify_css
 #   activate :minify_javascript
 # end
-class MyFeature < Middleman::Extension
 
-  def manipulate_resource_list(resources)
-    resources.each do |resource|
-      # resource.destination_path.gsub!(/views\/.*/, " ")
-    end
-
-    resources
-  end
-end
-::Middleman::Extensions.register(:my_feature, MyFeature)
-activate :my_feature
-
-
-configure :build do
-  activate :minify_css
-  activate :minify_javascript
-
-  # Append a hash to asset urls (make sure to use the url helpers)
-  activate :asset_hash
-
-  activate :asset_host, :host => '//yutafujii.cloudfront.net'
-end
 
 map "/sinatra" do
   run MySinatra
