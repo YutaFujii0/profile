@@ -1,0 +1,3 @@
+class RunMySinatra < MySinatra
+
+end

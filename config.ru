@@ -1,2 +1,2 @@
-require './config'
-run MySinatra
+require './app'
+run RunMySinatra
