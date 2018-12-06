@@ -42,6 +42,6 @@ use Rack::TryStatic,
   # content = File.exist?(not_found_page) ? File.read(not_found_page) : '404 - page not found'
   # return [404, { 'Content-Type'  => 'text/html'}, [content]]
 # }
-map "/sinatra" do
+map "/" do
   run MySinatra
 end
