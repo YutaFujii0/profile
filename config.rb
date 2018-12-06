@@ -58,7 +58,7 @@ class MyFeature < Middleman::Extension
 
   def manipulate_resource_list(resources)
     resources.each do |resource|
-      resource.destination_path.gsub!(/views\/.*/, " ")
+      # resource.destination_path.gsub!(/views\/.*/, " ")
     end
 
     resources
@@ -83,7 +83,7 @@ class MySinatra < Sinatra::Base
   set :sprockets ,Sprockets::Environment.new
   set :assets_prefix, '/assets'
   set :digest_assets, true
-  set :views, [ File.expand_path("../source/views/", __FILE__) ]
+  set :views, [ File.expand_path("../source/views/", __FILE__),File.expand_path("../source/views/layouts", __FILE__) ]
   set :public_folder, File.expand_path("../source", __FILE__)
 
   configure do
@@ -103,7 +103,13 @@ class MySinatra < Sinatra::Base
     end
   end
   get "/" do
+    haml :index, "layouts/layout" => :post
+  end
+  get "/views/index" do
     haml :index, "layout" => :post
+  end
+  get "/views/layouts/layout" do
+    haml "layouts/layout"
   end
 end
 
