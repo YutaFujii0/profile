@@ -113,6 +113,6 @@ class MySinatra < Sinatra::Base
   end
 end
 
-map "/" do
+map "/sinatra" do
   run MySinatra
 end
